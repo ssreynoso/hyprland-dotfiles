@@ -1,0 +1,178 @@
+/* Catppuccin Mocha Theme - matching your nvim config */
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "JetBrainsMono Nerd Font", "FontAwesome", sans-serif;
+    font-size: 13px;
+    min-height: 0;
+}
+
+window#waybar {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+/* Workspaces */
+#workspaces {
+    background-color: #000000;
+    margin: 0;
+    padding: 0;
+}
+
+#workspaces button {
+    padding: 0 10px;
+    color: #ffffff;
+    background-color: transparent;
+    border-bottom: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+#workspaces button:hover {
+    background-color: #0E2148;
+    color: #FBA834;
+}
+
+#workspaces button.active {
+    color: #FBA834;
+    border-bottom: 2px solid #FBA834;
+    background: linear-gradient(90deg, rgba(251,168,52,0.1) 0%, rgba(154,100,255,0.1) 100%);
+}
+
+#workspaces button.urgent {
+    color: #f38ba8;
+    border-bottom: 2px solid #f38ba8;
+}
+
+/* Window title */
+#window {
+    margin: 0 10px;
+    color: #ffcd81;
+    font-weight: normal;
+}
+
+/* Clock */
+#clock {
+    padding: 0 15px;
+    color: #9a64ff;
+    font-weight: bold;
+    background-color: transparent;
+}
+
+#clock:hover {
+    background-color: #0E2148;
+}
+
+/* System modules */
+#cpu,
+#memory,
+#battery,
+#network,
+#pulseaudio,
+#custom-power-profile {
+    padding: 0 10px;
+    margin: 0 2px;
+    color: #ffffff;
+    background-color: transparent;
+}
+
+#cpu {
+    color: #73ffc5;
+}
+
+#memory {
+    color: #B2D8CE;
+}
+
+#battery {
+    color: #ffcd81;
+}
+
+#battery.charging {
+    color: #a6e3a1;
+}
+
+#battery.warning:not(.charging) {
+    color: #f9e2af;
+}
+
+#battery.critical:not(.charging) {
+    color: #f38ba8;
+    animation: blink 1s linear infinite;
+}
+
+@keyframes blink {
+    to {
+        color: #000000;
+    }
+}
+
+#network {
+    color: #89b4fa;
+}
+
+#network.disconnected {
+    color: #f38ba8;
+}
+
+#pulseaudio {
+    color: #FBA834;
+}
+
+#pulseaudio.muted {
+    color: #6c7086;
+}
+
+/* Power profiles */
+#custom-power-profile {
+    color: #f5c2e7;
+    font-size: 16px;
+}
+
+#custom-power-profile.performance {
+    color: #f38ba8;
+}
+
+#custom-power-profile.balanced {
+    color: #89b4fa;
+}
+
+#custom-power-profile.power-saver {
+    color: #a6e3a1;
+}
+
+/* System tray */
+#tray {
+    padding: 0 10px;
+    background-color: transparent;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    color: #f38ba8;
+}
+
+/* Hover effects for all modules */
+#cpu:hover,
+#memory:hover,
+#battery:hover,
+#network:hover,
+#pulseaudio:hover,
+#custom-power-profile:hover {
+    background-color: #0E2148;
+}
+
+/* Tooltips */
+tooltip {
+    background-color: #0E2148;
+    border: 1px solid #FBA834;
+    border-radius: 5px;
+    color: #ffffff;
+}
+
+tooltip label {
+    color: #ffffff;
+}

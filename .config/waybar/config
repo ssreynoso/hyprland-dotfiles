@@ -1,0 +1,107 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 30,
+    "spacing": 0,
+    "modules-left": ["hyprland/workspaces", "hyprland/window"],
+    "modules-center": ["clock"],
+    "modules-right": ["hyprland/language", "pulseaudio", "network", "cpu", "memory", "battery", "custom/power-profile", "tray"],
+
+    "hyprland/workspaces": {
+        "format": "{id}",
+        "on-click": "activate",
+        "all-outputs": true,
+        "persistent-workspaces": {
+            "1": [],
+            "2": [],
+            "3": [],
+            "4": [],
+            "5": []
+        }
+    },
+
+    "hyprland/window": {
+        "format": "{}",
+        "max-length": 50,
+        "separate-outputs": true
+    },
+
+    "clock": {
+        "timezone": "America/Argentina/Buenos_Aires",
+        "format": " {:%H:%M - %d/%m/%Y}",
+        "tooltip-format": "<tt><small>{calendar}</small></tt>",
+        "calendar": {
+            "mode": "month",
+            "mode-mon-col": 3,
+            "weeks-pos": "right",
+            "on-scroll": 1,
+            "format": {
+                "months": "<span color='#ffead3'><b>{}</b></span>",
+                "days": "<span color='#ecc6d9'>{}</span>",
+                "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
+                "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+                "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
+            }
+        }
+    },
+
+    "cpu": {
+        "format": " {usage}%",
+        "tooltip": true
+    },
+
+    "memory": {
+        "format": " {}%"
+    },
+
+    "battery": {
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon} {capacity}%",
+        "format-charging": " {capacity}%",
+        "format-plugged": " {capacity}%",
+        "format-icons": ["", "", "", "", ""]
+    },
+
+    "network": {
+        "format-wifi": " {essid}",
+        "format-ethernet": " {ipaddr}",
+        "format-disconnected": "⚠ Disconnected",
+        "tooltip-format": "{ifname}: {ipaddr}/{cidr}"
+    },
+
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-muted": " Muted",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
+        "on-click": "pavucontrol"
+    },
+
+    "tray": {
+        "spacing": 10
+    },
+
+    "hyprland/language": {
+        "format": "⌨ {}",
+        "format-en": "EN",
+        "format-es": "LATAM"
+    },
+
+    "custom/power-profile": {
+        "exec": "powerprofilesctl get",
+        "interval": 5,
+        "return-type": "json",
+        "exec": "profile=$(powerprofilesctl get); case $profile in performance) echo '{\"text\":\"󰓅\",\"tooltip\":\"Performance\",\"class\":\"performance\"}';; balanced) echo '{\"text\":\"\",\"tooltip\":\"Balanced\",\"class\":\"balanced\"}';; power-saver) echo '{\"text\":\"\",\"tooltip\":\"Power Saver\",\"class\":\"power-saver\"}';; *) echo '{\"text\":\"\",\"tooltip\":\"Unknown\"}';; esac",
+        "on-click": "profile=$(powerprofilesctl get); if [ \"$profile\" = \"power-saver\" ]; then powerprofilesctl set balanced; elif [ \"$profile\" = \"balanced\" ]; then powerprofilesctl set performance; else powerprofilesctl set power-saver; fi"
+    }
+}
