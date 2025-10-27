@@ -211,3 +211,6 @@ alias ws='/home/ssreynoso/worksession/start.sh'
 # Print alias
 alias print='grim -g "$(slurp)" - | wl-copy && notify-send "📸 Captura copiada al portapapeles"'
 
+# Obsidian alias
+alias obsimain='xdg-open "obsidian://open?vault=main" &'
+

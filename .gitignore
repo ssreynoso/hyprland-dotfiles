@@ -1,6 +1,56 @@
+# Archivos de backup
 *.backup
 *.bak
 *.swp
 *.swo
 *~
+
+# Sistema operativo
 .DS_Store
+Thumbs.db
+
+# Archivos sensibles y credenciales
+.ssh/
+*.pem
+*.key
+*.crt
+*.p12
+*secret*
+*password*
+*token*
+*credentials*
+.env
+.env.*
+
+# Caches y temporales
+*.cache
+*.tmp
+cache/
+tmp/
+
+# Logs
+*.log
+logs/
+
+# Específicos de aplicaciones
+home/.gitconfig  # Puede contener tokens o datos sensibles
+.config/obsidian/  # Bóveda personal
+.config/Code/  # Configuración de VSCode (suele tener tokens)
+.config/google-chrome/
+.config/discord/
+.config/spotify/
+
+# Node y desarrollo
+node_modules/
+.npm/
+.nvm/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# Bases de datos locales
+*.db
+*.sqlite
+*.sqlite3
