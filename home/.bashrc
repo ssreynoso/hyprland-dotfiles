@@ -203,7 +203,6 @@ gbc() {
 alias deletebranch='gbd'
 alias copybranch='gbc'
 
-alias claude="/home/ssreynoso/.nvm/versions/node/v22.21.0/bin/claude"
 
 # Workspace setup
 alias ws='/home/ssreynoso/worksession/start.sh'
