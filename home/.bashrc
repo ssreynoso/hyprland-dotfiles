@@ -213,3 +213,6 @@ alias print='grim -g "$(slurp)" - | wl-copy && notify-send "📸 Captura copiada
 # Obsidian alias
 alias obsimain='xdg-open "obsidian://open?vault=main" &'
 
+# QT5CT
+export QT_QPA_PLATFORMTHEME=qt5ct
+
