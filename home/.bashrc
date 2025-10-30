@@ -203,6 +203,8 @@ gbc() {
 alias deletebranch='gbd'
 alias copybranch='gbc'
 
+alias audio='~/.local/bin/audio.sh'
+alias vpn='~/.local/bin/vpn.sh'
 
 # Workspace setup
 alias ws='/home/ssreynoso/worksession/start.sh'
@@ -216,3 +218,5 @@ alias obsimain='xdg-open "obsidian://open?vault=main" &'
 # QT5CT
 export QT_QPA_PLATFORMTHEME=qt5ct
 
+# Docker alias
+alias dps='docker ps --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}"'
