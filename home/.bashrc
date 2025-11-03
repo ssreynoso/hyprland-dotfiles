@@ -145,7 +145,7 @@ PATH=$PATH:/usr/local/go/bin
 PATH=$PATH:/usr/lib/docker/cli-plugins
 
 # Sql Server
-export PATH="$PATH:/opt/mssql-tools18/bin"
+export PATH="$PATH:/opt/mssql-tools/bin"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -220,3 +220,6 @@ export QT_QPA_PLATFORMTHEME=qt5ct
 
 # Docker alias
 alias dps='docker ps --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}"'
+
+# Alias pwd copy
+alias cppwd='pwd | wl-copy'
