@@ -2,7 +2,7 @@
 #!/bin/bash
 
 # Directorio donde están tus wallpapers
-WALLPAPER_DIR="$HOME/Pictures/wallpapers"
+WALLPAPER_DIR="$HOME/dotfiles/wallpapers"
 
 # Modo de ejecución:
 # - "once" -> cambia 1 sola vez y sale
