@@ -200,8 +200,8 @@ gbc() {
   [ -n "$sel" ] && echo -n "$sel" | wl-copy # wl-copy o pbcopy según tu entorno
 }
 
-alias deletebranch='gbd'
-alias copybranch='gbc'
+alias dltbranch='gbd'
+alias cpbranch='gbc'
 
 alias audio='~/.local/bin/audio.sh'
 alias vpn='~/.local/bin/vpn.sh'
