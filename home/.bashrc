@@ -221,3 +221,5 @@ alias dps='docker ps --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}"'
 # Alias pwd copy
 alias cppwd='pwd | wl-copy'
 
+# Disks
+alias disks='lsblk -o NAME,LABEL,FSAVAIL,FSUSE%,SIZE,MODEL'
