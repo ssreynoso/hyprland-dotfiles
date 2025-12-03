@@ -1,0 +1,253 @@
+/* =========================================================
+ * Global
+ * =======================================================*/
+
+* {
+    all: unset;
+    font-family: "JetBrainsMono Nerd Font", monospace;
+    font-size: 14px;
+}
+
+window {
+    background: transparent;
+}
+
+/* =========================================================
+ * Notificación individual
+ * =======================================================*/
+
+.notification-row {
+    outline: none;
+    margin: 6px;
+    padding: 0;
+    border-radius: 10px;
+}
+
+.notification {
+    background: rgba(0, 0, 0, 0.85);
+    /* negro con transparencia */
+    border-radius: 10px;
+    /* redondeo suave */
+    border: 1px solid rgba(154, 100, 255, 0.9);
+    /* violeta */
+    padding: 8px;
+    margin: 4px 6px;
+    position: relative;
+}
+
+/* Contenido principal: icono + texto */
+.notification-content {
+    padding: 8px;
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+}
+
+/* Ícono de la notificación (más chico) */
+.notification-content .image,
+.summary .image,
+.body .image {
+    -gtk-icon-size: 16px;
+    min-width: 16px;
+    min-height: 16px;
+    margin-right: 4px;
+}
+
+/* Acción principal (click en la notificación) */
+.notification-default-action {
+    margin: 0;
+    padding: 0;
+    border-radius: 8px;
+}
+
+/* Botones de acción secundarios */
+.notification-action {
+    background: linear-gradient(135deg, #f97316, #a855f7);
+    /* naranja → violeta */
+    color: #e5e9f0;
+    border-radius: 999px;
+    margin: 4px;
+    padding: 4px 10px;
+    border: none;
+}
+
+.notification-action:hover {
+    filter: brightness(1.1);
+}
+
+/* =========================================================
+ * Texto de la notificación
+ * =======================================================*/
+
+/* Título base (si no hay urgencia marcada) */
+.summary {
+    font-weight: bold;
+    color: #e5e9f0;
+    margin-bottom: 4px;
+}
+
+/* Hora lateral / pequeña */
+.time {
+    color: rgba(186, 194, 222, 0.8);
+    font-size: 12px;
+    margin-left: 6px;
+}
+
+/* Cuerpo del mensaje */
+.body {
+    color: rgba(205, 214, 244, 0.9);
+    margin-top: 2px;
+}
+
+/* =========================================================
+ * Colores según urgencia (si el daemon pone .low/.normal/.critical)
+ * =======================================================*/
+
+/* Urgencia baja → violeta suave */
+.notification.low .summary {
+    color: #cba6f7;
+}
+
+/* Normal → naranja */
+.notification.normal .summary {
+    color: #fab387;
+}
+
+/* Crítica → rojo/rosa y marcador a la izquierda */
+.notification.critical {
+    border-color: #f38ba8;
+}
+
+.notification.critical .summary {
+    color: #f38ba8;
+    border-left: 2px solid #f38ba8;
+    padding-left: 6px;
+}
+
+/* =========================================================
+ * Panel de notificaciones (Control Center)
+ * =======================================================*/
+
+.control-center {
+    background: rgba(0, 0, 0, 0.92);
+    /* negro semi-transparente */
+    border-radius: 14px;
+    border: 1px solid #f97316;
+    /* 🔶 naranja */
+    padding: 12px;
+}
+
+.control-center-list {
+    background: transparent;
+}
+
+.control-center-list-placeholder {
+    color: rgba(255, 255, 255, 0.45);
+    font-size: 15px;
+}
+
+/* =========================================================
+ * Widgets dentro del panel
+ * =======================================================*/
+
+.widget-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #ffffff;
+    margin: 6px 10px 10px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.widget-title>button {
+    background: linear-gradient(135deg, #f97316, #a855f7);
+    /* 🔶 naranja + 🟣 violeta */
+    color: #ffffff;
+    border-radius: 999px;
+    padding: 4px 12px;
+    border: none;
+}
+
+.widget-title>button:hover {
+    filter: brightness(1.1);
+}
+
+/* Caja de widgets */
+.widget-dnd,
+.widget-inhibitors {
+    margin: 8px 10px;
+    padding: 10px;
+    background: rgba(12, 12, 18, 0.95);
+    /* casi negro */
+    border-radius: 10px;
+    border: 1px solid rgba(249, 115, 22, 0.5);
+    /* 🔶 naranja suave */
+}
+
+/* Switch DND */
+.widget-dnd>switch {
+    background: rgba(39, 39, 54, 1);
+    border-radius: 999px;
+}
+
+.widget-dnd>switch:checked {
+    background: linear-gradient(135deg, #f97316, #a855f7);
+    /* 🔶 naranja + 🟣 violeta */
+}
+
+.widget-dnd>switch slider {
+    background: #ffffff;
+    border-radius: 999px;
+}
+
+/* Inhibidores — Botones */
+.widget-inhibitors>button {
+    background: linear-gradient(135deg, #a855f7, #f97316);
+    /* 🟣 → 🔶 */
+    color: #ffffff;
+    border-radius: 999px;
+    padding: 4px 10px;
+    margin: 4px;
+    border: none;
+}
+
+.widget-inhibitors>button:hover {
+    filter: brightness(1.1);
+}
+
+/* ===========================
+ * ICONOS CHICOS DE VERDAD
+ * ===========================*/
+
+.notification-content .image,
+.notification .image,
+.summary .image,
+.body .image,
+.notification-image {
+    -gtk-icon-size: 12px !important;
+    /* tamaño del ícono */
+    width: 12px !important;
+    height: 12px !important;
+
+    min-width: 12px !important;
+    min-height: 12px !important;
+    max-width: 12px !important;
+    max-height: 12px !important;
+
+    margin-right: 6px;
+    padding: 0 !important;
+
+    /* Si el ícono es un PNG/SVG grande, esto lo achica correctamente */
+    background-size: 12px 12px !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+}
+
+.notification-content .image>* {
+    -gtk-icon-size: 12px !important;
+    width: 12px !important;
+    height: 12px !important;
+    min-width: 12px !important;
+    min-height: 12px !important;
+}
