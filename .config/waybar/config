@@ -5,7 +5,7 @@
     "spacing": 0,
     "modules-left": ["hyprland/workspaces", "hyprland/window"],
     "modules-center": ["clock"],
-    "modules-right": ["hyprland/language", "pulseaudio", "custom/audio-device", "network", "cpu", "memory", "battery", "custom/power-profile", "tray"],
+    "modules-right": ["hyprland/language", "pulseaudio", "custom/audio-device", "network", "cpu", "memory", "battery", "custom/power-profile", "custom/notification", "tray"],
 
     "hyprland/workspaces": {
         "format": "{id}",
@@ -110,5 +110,26 @@
         "return-type": "json",
         "exec": "profile=$(powerprofilesctl get); case $profile in performance) echo '{\"text\":\"󰓅\",\"tooltip\":\"Performance\",\"class\":\"performance\"}';; balanced) echo '{\"text\":\"\",\"tooltip\":\"Balanced\",\"class\":\"balanced\"}';; power-saver) echo '{\"text\":\"\",\"tooltip\":\"Power Saver\",\"class\":\"power-saver\"}';; *) echo '{\"text\":\"\",\"tooltip\":\"Unknown\"}';; esac",
         "on-click": "profile=$(powerprofilesctl get); if [ \"$profile\" = \"power-saver\" ]; then powerprofilesctl set balanced; elif [ \"$profile\" = \"balanced\" ]; then powerprofilesctl set performance; else powerprofilesctl set power-saver; fi"
+    },
+
+    "custom/notification": {
+        "tooltip": false,
+        "format": "{icon}",
+        "format-icons": {
+            "notification": "<span foreground='red'><sup></sup></span>",
+            "none": "",
+            "dnd-notification": "<span foreground='red'><sup></sup></span>",
+            "dnd-none": "",
+            "inhibited-notification": "<span foreground='red'><sup></sup></span>",
+            "inhibited-none": "",
+            "dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
+            "dnd-inhibited-none": ""
+        },
+        "return-type": "json",
+        "exec-if": "which swaync-client",
+        "exec": "swaync-client -swb",
+        "on-click": "swaync-client -t -sw",
+        "on-click-right": "swaync-client -d -sw",
+        "escape": true
     }
 }
