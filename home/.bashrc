@@ -223,3 +223,9 @@ alias cppwd='pwd | wl-copy'
 
 # Disks
 alias disks='lsblk -o NAME,LABEL,FSAVAIL,FSUSE%,SIZE,MODEL'
+
+# ToMov & ToWebp & ToMp4
+alias tomov='bash /home/ssreynoso/.config/hypr/scripts/tomov.sh'
+alias towebp='bash /home/ssreynoso/.config/hypr/scripts/towebp.sh'
+alias tomp4='bash /home/ssreynoso/.config/hypr/scripts/tomp4.sh'
+
