@@ -229,3 +229,5 @@ alias tomov='bash /home/ssreynoso/.config/hypr/scripts/tomov.sh'
 alias towebp='bash /home/ssreynoso/.config/hypr/scripts/towebp.sh'
 alias tomp4='bash /home/ssreynoso/.config/hypr/scripts/tomp4.sh'
 
+# Alias for tauri dev linux
+alias tdev='npm run tauri:dev:linux'
