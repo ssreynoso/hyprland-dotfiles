@@ -180,7 +180,21 @@ esac
 export PATH="/opt/nvim-linux-x86_64/bin:$PATH"
 
 # PS1
-export PS1='\[\e[38;5;141m\]\u\[\e[0m\]: \[\e[38;5;208m\]\w\[\e[0m\] \[\e[38;5;208m\]>\[\e[0m\] '
+# Función para acortar el path mostrando ~.../carpeta-padre/carpeta-actual
+_short_path() {
+    local path="${PWD/#$HOME/\~}"
+    local IFS='/'
+    local parts=($path)
+    local count=${#parts[@]}
+
+    if [ $count -le 3 ]; then
+        echo "$path"
+    else
+        echo "${parts[0]}/.../${parts[$count-2]}/${parts[$count-1]}"
+    fi
+}
+
+export PS1='\[\e[38;5;141m\]\u\[\e[0m\]: \[\e[38;5;208m\]$(_short_path)\[\e[0m\] \[\e[38;5;208m\]>\[\e[0m\] '
 . "$HOME/.cargo/env"
 
 # gbd  : borra una o varias ramas elegidas con fzf
