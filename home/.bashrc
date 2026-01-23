@@ -245,3 +245,9 @@ alias tomp4='bash /home/ssreynoso/.config/hypr/scripts/tomp4.sh'
 
 # Alias for tauri dev linux
 alias tdev='npm run tauri:dev:linux'
+
+# Alias for daily work
+alias journey='setsid ~/Desktop/Dev/projects/obsidian-accountability-dashboard/src-tauri/target/release/obsidian-accountability-dashboard </dev/null >/dev/null 2>&1 &'
+
+# Alias for notepad
+alias notepad='nvim /home/ssreynoso/Desktop/Dev/utils/notepad'

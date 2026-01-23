@@ -5,17 +5,11 @@
 # Esperar a que Hyprland esté listo
 sleep 2
 
-# 1. Cambiar al workspace especial
-hyprctl dispatch togglespecialworkspace
-
-# 2. Abrir la app de accountability
+# 1. Abrir la app de accountability
 APP_PATH="$HOME/Desktop/Dev/projects/obsidian-accountability-dashboard/src-tauri/target/release/obsidian-accountability-dashboard"
 
 if [ -f "$APP_PATH" ]; then
     $APP_PATH &
-    sleep 2
-    # Hacer fullscreen la ventana
-    hyprctl dispatch fullscreen 1
 else
     echo "App no encontrada en $APP_PATH"
     echo "Ejecutá 'pnpm tauri:build' en el proyecto primero"
