@@ -8,7 +8,7 @@ REPOS=(
     "/home/ssreynoso/Desktop/Dev/projects/obsidian-accountability-dashboard"
     "/home/ssreynoso/Desktop/Dev/trabajo/Aislant/aislant-framework"
     "/home/ssreynoso/dotfiles"
-    "/home/ssreynoso/dotfiles/.config/nvim"
+    "/home/ssreynoso/.config/nvim"
 )
 
 for REPO in "${REPOS[@]}"; do
