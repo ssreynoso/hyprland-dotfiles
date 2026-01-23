@@ -4,8 +4,11 @@
 # Ejecutado por Hyprland exec-once
 
 REPOS=(
-    "/home/ssreynoso/.config/hypr"
-    "/home/ssreynoso/.config/nvim"
+    "/home/ssreynoso/obsidian/obsidian-main"
+    "/home/ssreynoso/Desktop/Dev/projects/obsidian-accountability-dashboard"
+    "/home/ssreynoso/Desktop/Dev/trabajo/Aislant/aislant-framework"
+    "/home/ssreynoso/dotfiles"
+    "/home/ssreynoso/dotfiles/.config/nvim"
 )
 
 # Fecha actual para el stash

@@ -251,3 +251,23 @@ alias journey='setsid ~/Desktop/Dev/projects/obsidian-accountability-dashboard/s
 
 # Alias for notepad
 alias notepad='nvim /home/ssreynoso/Desktop/Dev/utils/notepad'
+
+# Alias for access to trabajo
+alias trabajo='cd /home/ssreynoso/Desktop/Dev/trabajo/'
+
+# Alias for access to projects
+alias projects='cd /home/ssreynoso/Desktop/Dev/projects/'
+
+# Alias for access to tech
+alias tech='cd /home/ssreynoso/Desktop/Dev/tech/'
+
+# Alias for access to tech
+alias tech='cd /home/ssreynoso/Desktop/Dev/tech/'
+
+# Alias for access to dev
+alias dev='cd /home/ssreynoso/Desktop/Dev/dev/'
+
+# Sync repos
+alias pull-all='/home/ssreynoso/.config/hypr/scripts/sync-configs.sh'
+alias push-all='/home/ssreynoso/.config/hypr/scripts/push-configs.sh'
+
