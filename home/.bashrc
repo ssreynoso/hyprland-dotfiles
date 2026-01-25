@@ -271,3 +271,4 @@ alias dev='cd /home/ssreynoso/Desktop/Dev/dev/'
 alias pull-all='/home/ssreynoso/.config/hypr/scripts/sync-configs.sh'
 alias push-all='/home/ssreynoso/.config/hypr/scripts/push-configs.sh'
 
+export PATH="$HOME/.local/bin:$PATH"
