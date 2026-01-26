@@ -9,6 +9,7 @@ REPOS=(
     "/home/ssreynoso/Desktop/Dev/trabajo/Aislant/aislant-framework"
     "/home/ssreynoso/dotfiles"
     "/home/ssreynoso/dotfiles/.config/nvim"
+    "/home/ssreynoso/Desktop/Dev/utils/db-queries"
 )
 
 # Fecha actual para el stash

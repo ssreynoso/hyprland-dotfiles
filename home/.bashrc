@@ -261,11 +261,11 @@ alias projects='cd /home/ssreynoso/Desktop/Dev/projects/'
 # Alias for access to tech
 alias tech='cd /home/ssreynoso/Desktop/Dev/tech/'
 
-# Alias for access to tech
-alias tech='cd /home/ssreynoso/Desktop/Dev/tech/'
+# Alias for access to utils
+alias utils='cd /home/ssreynoso/Desktop/Dev/utils/'
 
 # Alias for access to dev
-alias dev='cd /home/ssreynoso/Desktop/Dev/dev/'
+alias dev='cd /home/ssreynoso/Desktop/Dev/'
 
 # Sync repos
 alias pull-all='/home/ssreynoso/.config/hypr/scripts/sync-configs.sh'

@@ -9,6 +9,7 @@ REPOS=(
     "/home/ssreynoso/Desktop/Dev/trabajo/Aislant/aislant-framework"
     "/home/ssreynoso/dotfiles"
     "/home/ssreynoso/.config/nvim"
+    "/home/ssreynoso/Desktop/Dev/utils/db-queries"
 )
 
 for REPO in "${REPOS[@]}"; do
