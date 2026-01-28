@@ -9,7 +9,7 @@ sleep 2
 APP_PATH="$HOME/Desktop/Dev/projects/obsidian-accountability-dashboard/src-tauri/target/release/obsidian-accountability-dashboard"
 
 if [ -f "$APP_PATH" ]; then
-    $APP_PATH &
+    nohup env WEBKIT_DISABLE_DMABUF_RENDERER=1 "$APP_PATH" >/tmp/obsidian-accountability-dashboard.log 2>&1 & disown
 else
     echo "App no encontrada en $APP_PATH"
     echo "Ejecutá 'pnpm tauri:build' en el proyecto primero"
