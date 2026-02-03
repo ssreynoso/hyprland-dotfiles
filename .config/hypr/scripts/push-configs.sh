@@ -3,14 +3,13 @@
 # Script para pushear repositorios de configuración
 # Usa claude --print para generar mensajes de commit
 
-REPOS=(
-    "/home/ssreynoso/obsidian/obsidian-main"
-    "/home/ssreynoso/Desktop/Dev/projects/obsidian-accountability-dashboard"
-    "/home/ssreynoso/Desktop/Dev/trabajo/Aislant/aislant-framework"
-    "/home/ssreynoso/dotfiles"
-    "/home/ssreynoso/.config/nvim"
-    "/home/ssreynoso/Desktop/Dev/utils/db-queries"
-)
+# Cargar repositorios desde archivo de configuración
+SCRIPT_DIR="$(dirname "$(realpath "$0")")"
+REPOS=()
+while IFS= read -r line || [[ -n "$line" ]]; do
+    [[ -z "$line" || "$line" =~ ^# ]] && continue
+    REPOS+=("$line")
+done < "$SCRIPT_DIR/repos.conf"
 
 for REPO in "${REPOS[@]}"; do
     if [ -d "$REPO/.git" ]; then
