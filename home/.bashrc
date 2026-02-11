@@ -217,7 +217,7 @@ gbc() {
 alias dltbranch='gbd'
 alias cpbranch='gbc'
 
-alias audio='~/.local/bin/audio.sh'
+alias audio='~/.config/hypr/scripts/audio.sh'
 alias vpn='~/.local/bin/vpn.sh'
 
 # Workspace setup
