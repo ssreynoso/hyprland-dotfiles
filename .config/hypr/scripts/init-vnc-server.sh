@@ -1,0 +1,4 @@
+vncserver :1 -geometry 1920x1080 -depth 24
+
+# kill
+# vncserver -kill :1
