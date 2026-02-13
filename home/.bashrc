@@ -287,3 +287,5 @@ alias status-all='/home/ssreynoso/.config/hypr/scripts/status-configs.sh'
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="/home/ssreynoso/apps/claude-hfi:$PATH"
 
+# SSH connect to PC
+alias sshpc='ssh ssreynoso@100.126.197.19'
