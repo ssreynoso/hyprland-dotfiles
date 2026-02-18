@@ -217,6 +217,18 @@ gbc() {
 alias dltbranch='gbd'
 alias cpbranch='gbc'
 
+# fh: busca en el historial con fzf y pone el comando en el prompt sin ejecutarlo
+__fzf_history() {
+  local selected
+  selected=$(HISTTIMEFORMAT= history | sort -k1,1rn | sed 's/^ *[0-9]* *//' | awk '!seen[$0]++' | \
+    fzf --height=40% --reverse --border --prompt="History > " --query="$READLINE_LINE")
+  if [[ -n "$selected" ]]; then
+    READLINE_LINE="$selected"
+    READLINE_POINT=${#selected}
+  fi
+}
+bind -x '"\C-f": __fzf_history'
+
 alias audio='~/.config/hypr/scripts/audio.sh'
 alias vpn='~/.local/bin/vpn.sh'
 
@@ -273,3 +285,5 @@ alias push-all='/home/ssreynoso/.config/hypr/scripts/push-configs.sh'
 alias status-all='/home/ssreynoso/.config/hypr/scripts/status-configs.sh'
 
 export PATH="$HOME/.local/bin:$PATH"
+export PATH="/home/ssreynoso/apps/claude-hfi:$PATH"
+
