@@ -11,9 +11,6 @@ while IFS= read -r line || [[ -n "$line" ]]; do
     REPOS+=("$line")
 done < "$SCRIPT_DIR/repos.conf"
 
-# Fecha actual para el stash
-FECHA=$(date +"%Y-%m-%d %H:%M:%S")
-
 for REPO in "${REPOS[@]}"; do
     if [ -d "$REPO/.git" ]; then
         REPO_NAME=$(basename "$REPO")
@@ -21,12 +18,11 @@ for REPO in "${REPOS[@]}"; do
 
         # Verificar si hay cambios (staged, unstaged o untracked)
         if ! git diff --quiet || ! git diff --cached --quiet || [ -n "$(git ls-files --others --exclude-standard)" ]; then
-            notify-send "Config Sync" "Guardando cambios en $REPO_NAME..." -u normal -t 3000
-            git stash save "$FECHA"
-            notify-send "Config Sync" "Cambios guardados en stash: $REPO_NAME" -u normal -t 3000
+            notify-send "Config Sync" "$REPO_NAME tiene cambios sin commitear. Hacé commit o descartá los cambios antes de sincronizar." -u critical -t 7000
+            continue
         fi
 
-        # Hacer pull después de limpiar el staging
+        # Hacer pull
         notify-send "Config Sync" "Actualizando $REPO_NAME..." -u normal -t 3000
         PULL_OUTPUT=$(git pull origin main 2>&1)
 
