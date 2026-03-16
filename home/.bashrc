@@ -227,6 +227,7 @@ __fzf_history() {
     READLINE_POINT=${#selected}
   fi
 }
+bind -x '"\C-r": __fzf_history'
 bind -x '"\C-f": __fzf_history'
 
 alias audio='~/.config/hypr/scripts/audio.sh'
