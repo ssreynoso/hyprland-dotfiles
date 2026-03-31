@@ -290,3 +290,6 @@ export PATH="/home/ssreynoso/apps/revelo/claude-hfi:$PATH"
 
 # SSH connect to PC
 alias sshpc='ssh ssreynoso@100.126.197.19'
+
+# Toggle secondary monitor for focused work
+alias zen='bash ~/.config/hypr/scripts/zen.sh'
