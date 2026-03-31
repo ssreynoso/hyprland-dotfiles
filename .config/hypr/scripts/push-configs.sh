@@ -11,14 +11,19 @@ while IFS= read -r line || [[ -n "$line" ]]; do
     REPOS+=("$line")
 done < "$SCRIPT_DIR/repos.conf"
 
+echo "==> Iniciando push de configs..."
+echo ""
+
 for REPO in "${REPOS[@]}"; do
     if [ -d "$REPO/.git" ]; then
         REPO_NAME=$(basename "$REPO")
-        cd "$REPO" || continue
+        cd "$REPO" || { echo "[ERROR] No se pudo entrar a $REPO"; continue; }
+
+        echo "--- $REPO_NAME ---"
 
         # Verificar si hay cambios (staged, unstaged o untracked)
         if ! git diff --quiet || ! git diff --cached --quiet || [ -n "$(git ls-files --others --exclude-standard)" ]; then
-            notify-send "Config Push" "Procesando cambios en $REPO_NAME..." -u normal -t 3000
+            echo "    Procesando cambios..."
 
             # Agregar todos los cambios
             git add -A
@@ -42,23 +47,29 @@ $DIFF"
             git commit -m "$COMMIT_MSG"
 
             if [ $? -eq 0 ]; then
-                notify-send "Config Push" "Commit en $REPO_NAME: $COMMIT_MSG" -u normal -t 3000
+                echo "    Commit: $COMMIT_MSG"
 
                 # Hacer push
                 PUSH_OUTPUT=$(git push 2>&1)
 
                 if [ $? -eq 0 ]; then
-                    notify-send "Config Push" "$REPO_NAME pusheado correctamente" -u normal -t 3000
+                    echo "    Pusheado correctamente!"
                 else
-                    notify-send "Config Push" "Error al pushear $REPO_NAME" -u critical -t 5000
+                    echo "[ERROR] Falló el push en $REPO_NAME:"
+                    echo "$PUSH_OUTPUT"
                 fi
             else
-                notify-send "Config Push" "Error en commit de $REPO_NAME" -u critical -t 5000
+                echo "[ERROR] Falló el commit en $REPO_NAME"
             fi
         else
-            notify-send "Config Push" "$REPO_NAME sin cambios" -u low -t 2000
+            echo "    Sin cambios, nada que pushear."
         fi
+
+        echo ""
+    else
+        echo "[!] $REPO no es un repositorio git válido, saltando..."
+        echo ""
     fi
 done
 
-notify-send "Config Push" "Push completado" -u low -t 2000
+echo "==> Push completado."
