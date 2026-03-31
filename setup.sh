@@ -408,6 +408,48 @@ create_symlinks() {
         fi
     done
 
+    # Symlinks para archivos en subdirectorios de home
+    # Formato: "subdir/file"
+    local home_subdir_files=(
+        ".claude/CLAUDE.md"
+    )
+
+    for file in "${home_subdir_files[@]}"; do
+        local source="$DOTFILES_DIR/home/$file"
+        local target="$HOME/$file"
+        local target_dir="$(dirname "$target")"
+
+        if [[ ! -f "$source" ]]; then
+            print_warning "No existe: $source"
+            continue
+        fi
+
+        if [[ -L "$target" ]]; then
+            print_warning "Symlink ya existe: $target"
+            continue
+        fi
+
+        mkdir -p "$target_dir"
+
+        if [[ -e "$target" ]]; then
+            if confirm "¿Reemplazar $target con symlink?" "y"; then
+                if [[ "$DRY_RUN" == false ]]; then
+                    rm -f "$target"
+                fi
+            else
+                print_warning "Saltando: $target"
+                continue
+            fi
+        fi
+
+        if [[ "$DRY_RUN" == false ]]; then
+            ln -sf "$source" "$target"
+            print_success "Symlink creado: $target -> $source"
+        else
+            print_warning "[DRY RUN] Se crearía symlink: $target -> $source"
+        fi
+    done
+
     # Crear directorio para scripts si no existe
     if [[ ! -d "$HOME/.local/bin" ]]; then
         if [[ "$DRY_RUN" == false ]]; then
