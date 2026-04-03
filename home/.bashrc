@@ -293,3 +293,23 @@ alias sshpc='ssh ssreynoso@100.126.197.19'
 
 # Toggle secondary monitor for focused work
 alias zen='bash ~/.config/hypr/scripts/zen.sh'
+
+# cpcommit: busca commits del repo actual con fzf y copia el hash al portapapeles
+cpcommit() {
+  if ! git rev-parse --is-inside-work-tree &>/dev/null; then
+    echo "No estás dentro de un repositorio git." >&2
+    return 1
+  fi
+  local selected
+  selected=$(git log --format="%h  %as  %an  %s" |
+    fzf --height=50% --reverse --border \
+        --prompt="Commits > " \
+        --preview='git show --stat --color=always {1}' \
+        --preview-window=right:50%)
+  if [[ -n "$selected" ]]; then
+    local hash
+    hash=$(echo "$selected" | awk '{print $1}')
+    echo -n "$hash" | wl-copy
+    echo "Hash copiado: $hash"
+  fi
+}
