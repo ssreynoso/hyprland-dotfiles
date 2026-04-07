@@ -1,6 +1,7 @@
 ## Directivas Generales
 
 - No agregar firmas de Claude Code en los commits
+- **Nunca hacer `git push` sin confirmación explícita del usuario**, sin excepción.
 - Antes de ejecutar cualquier operación destructiva (borrar archivos, remover contenedores Docker, drop de bases de datos, `rm -rf`, etc.), mostrar un cartel de advertencia en rojo y pedir confirmación explícita al usuario. Formato del cartel:
 
 ```
