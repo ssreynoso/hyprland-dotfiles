@@ -92,7 +92,7 @@ change_once() {
     TRANSITION="${TRANSITION_SHUFFLED[$TRANSITION_INDEX]}"
 
     # Cambiar el wallpaper con swww
-    swww img "$WALLPAPER" \
+    awww img "$WALLPAPER" \
         --transition-type "$TRANSITION" \
         --transition-duration 1.2 \
         --transition-fps 60 \
