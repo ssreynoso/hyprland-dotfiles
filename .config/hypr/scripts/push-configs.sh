@@ -21,8 +21,22 @@ for REPO in "${REPOS[@]}"; do
 
         echo "--- $REPO_NAME ---"
 
+        HAS_CHANGES=false
+        HAS_UNPUSHED=false
+
         # Verificar si hay cambios (staged, unstaged o untracked)
         if ! git diff --quiet || ! git diff --cached --quiet || [ -n "$(git ls-files --others --exclude-standard)" ]; then
+            HAS_CHANGES=true
+        fi
+
+        # Verificar si hay commits sin pushear
+        if git rev-parse @{u} &>/dev/null 2>&1; then
+            if [ -n "$(git log @{u}..HEAD --oneline 2>/dev/null)" ]; then
+                HAS_UNPUSHED=true
+            fi
+        fi
+
+        if $HAS_CHANGES; then
             echo "    Procesando cambios..."
 
             # Agregar todos los cambios
@@ -48,20 +62,24 @@ $DIFF"
 
             if [ $? -eq 0 ]; then
                 echo "    Commit: $COMMIT_MSG"
-
-                # Hacer push
-                PUSH_OUTPUT=$(git push 2>&1)
-
-                if [ $? -eq 0 ]; then
-                    echo "    Pusheado correctamente!"
-                else
-                    echo "[ERROR] Falló el push en $REPO_NAME:"
-                    echo "$PUSH_OUTPUT"
-                fi
+                HAS_UNPUSHED=true
             else
                 echo "[ERROR] Falló el commit en $REPO_NAME"
             fi
-        else
+        fi
+
+        if $HAS_UNPUSHED; then
+            PUSH_OUTPUT=$(git push 2>&1)
+
+            if [ $? -eq 0 ]; then
+                echo "    Pusheado correctamente!"
+            else
+                echo "[ERROR] Falló el push en $REPO_NAME:"
+                echo "$PUSH_OUTPUT"
+            fi
+        fi
+
+        if ! $HAS_CHANGES && ! $HAS_UNPUSHED; then
             echo "    Sin cambios, nada que pushear."
         fi
 
